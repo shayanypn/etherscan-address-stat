@@ -3,8 +3,8 @@ import Form from './components/Form';
 
 const App: React.FC = () => {
 
-    const handleSearch = (obj:any) => {
-        console.log(obj);
+    const handleSearch = (data:any) => {
+        console.log(data);
     };
 
     return (

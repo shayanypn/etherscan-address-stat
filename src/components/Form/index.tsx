@@ -10,17 +10,26 @@ const Form: React.FC<FormProps> = ({ onSubmit }:FormProps) => {
 	const [inputAddress, setInputAddress] = React.useState('');
 	const [inputNetwork, setInputNetwork] = React.useState('rinkeby');
 	const [isValidAddress, setIsValidAddress] = React.useState(false);
+	const [usedAddresses, setUsedAddresses] = React.useState([] as string[]);
 
-
-	const handleAddressChange = (e:any) => {
-		const { value } = e.target;
+	const handleAddressChange = (value:string) => {
 		setIsValidAddress(validateAddresses(value));
 		setInputAddress(value);
 	};
 
-	const handleSubmit = () => {
+	const handleAddressSelect = (e:any) => {
+		const { value } = e.target;
+		if(value === '') {return;}
 
+		handleAddressChange(value);
+	};
+
+	const handleSubmit = () => {
 		if(!isValidAddress) { return; };
+
+		setUsedAddresses([inputAddress, ...usedAddresses].slice(0, 5));
+		handleAddressChange('');
+		setInputNetwork('rinkeby');
 
 		onSubmit({
 			address: inputAddress,
@@ -38,8 +47,8 @@ const Form: React.FC<FormProps> = ({ onSubmit }:FormProps) => {
 							type="text"
 							className={`form-control ${(isValidAddress && inputAddress.length) ? 'is-valid' : ''} ${(!isValidAddress && inputAddress.length) ? 'is-invalid' : ''}`}
 							id="input-address"
-							name="address"
-							onChange={handleAddressChange}
+							value={inputAddress}
+							onChange={e => handleAddressChange(e.target.value)}
 						/>
 					</div>
 				</div>
@@ -49,11 +58,11 @@ const Form: React.FC<FormProps> = ({ onSubmit }:FormProps) => {
 						<select
 							className="form-control"
 							id="select-addresses"
+							onChange={handleAddressSelect}
+							value=""
 						>
-							<option> Select from previous address</option>
-							<option>address 1</option>
-							<option>address 2</option>
-							<option>address 3</option>
+							<option value=""> Select from previous address</option>
+							{usedAddresses.map((address, indx) => (<option key={indx} value={address}>{address}</option>))}
 						</select>
 					</div>
 				</div>
