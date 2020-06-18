@@ -1,7 +1,9 @@
 
-# Etherscan address stat
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Etherscan address stat
+Simple app that show  etherscan state of and address
+
+[Preview](https://shayanypn.github.io/etherscan-address-stat/)
 
 ## Available Scripts
 
