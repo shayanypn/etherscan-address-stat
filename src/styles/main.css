@@ -8,7 +8,7 @@
 	--main-default-light: #edf2f7;
 	--main-default: #edf2f7;
 	--main-default-dark: #b9c7d6;
-	--main-default-darker: #ccd1d4;
+	--main-default-darker: #939ea5;
 	--main-default-darkest: #486580;
 
 
@@ -24,13 +24,16 @@ h1 {
 	margin-top: 40px;
 	color: var(--main-default-dark);
 }
+.p-description {
+	color: var(--main-default-darker);	
+}
 
 /* CONTAINER */
 main {
 	background: var(--main-default-lightest);
 	box-shadow: 0 3px 10px var(--main-default-dark);
 	padding: 15px;
-	max-width: 600px;
+	max-width: 800px;
 	margin: 20px auto 15px;
 	border-radius: 5px;
 }
@@ -46,17 +49,34 @@ main.not-found h1 {
 /* CARD */
 .card {
 	position: relative;
+	border-color: var(--main-default-lighter);
+}
+.card-empty {
+	border-color: transparent;
+}
+.card.card-loading .card-body {
+	opacity: 0.3;
 }
 .card.card-loading:after {
-	position: absolute;
+    position: absolute;
     width: 100%;
     height: 100%;
     background: rgba(255, 255, 255, 0.8);
     border-radius: 5px;
     content: ' Loading... ';
-    text-align: center;
-    padding-top: 15%;
     font-size: 18px;
+    left: 0px;
+    top: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card-stat {
+	background: var(--main-default-lighter);
+}
+.card-stat img {
+	width: 50px;
+	padding: 5px;
 }
 
 /* FORM */

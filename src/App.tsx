@@ -9,14 +9,16 @@ import Stat from './containers/Stat';
 import NotFound from './containers/NotFound';
 
 const App: React.FC = () => {
+
     return (
         <Router>
             <div className="container">
+                <h1 className="text-center">Ethereum address stat</h1>
                 <Switch>
                     <Route exact path="/">
                         <Home />
                     </Route>
-                    <Route path="/stat">
+                    <Route path="/stat/:address/:network">
                         <Stat />
                     </Route>
                     <Route path="*">

@@ -3,14 +3,14 @@ import { validateAddresses } from '../../utils';
 
 interface FormProps {
   onSubmit: any,
+  addresses?: string[]
 }
 
-const Form: React.FC<FormProps> = ({ onSubmit }:FormProps) => {
+const Form: React.FC<FormProps> = ({ onSubmit, addresses = [] }:FormProps) => {
 
 	const [inputAddress, setInputAddress] = React.useState('');
 	const [inputNetwork, setInputNetwork] = React.useState('rinkeby');
 	const [isValidAddress, setIsValidAddress] = React.useState(false);
-	const [usedAddresses, setUsedAddresses] = React.useState([] as string[]);
 
 	const handleAddressChange = (value:string) => {
 		setIsValidAddress(validateAddresses(value));
@@ -32,14 +32,14 @@ const Form: React.FC<FormProps> = ({ onSubmit }:FormProps) => {
 			network: inputNetwork
 		});
 
-		setUsedAddresses([inputAddress, ...usedAddresses].slice(0, 5));
+		// reset form
 		handleAddressChange('');
 		setInputNetwork('rinkeby');
 	};
 
 	return (
 		<div>
-			<div className="form-row">
+			<div className="form-row mb-0">
 				<div className="form-group col-sm-8">
 					<div className="form-group">
 						<label htmlFor="input-address">Address</label>
@@ -50,6 +50,9 @@ const Form: React.FC<FormProps> = ({ onSubmit }:FormProps) => {
 							value={inputAddress}
 							onChange={e => handleAddressChange(e.target.value)}
 						/>
+						<small id="input-address-tip" className="form-text text-muted">
+							Example: 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
+						</small>
 					</div>
 				</div>
 				<div className="form-group col-sm-4">
@@ -62,7 +65,7 @@ const Form: React.FC<FormProps> = ({ onSubmit }:FormProps) => {
 							value=""
 						>
 							<option value="">Select from previous address</option>
-							{usedAddresses.map((address, indx) => (<option key={indx} value={address}>{address}</option>))}
+							{addresses.map((address, indx) => (<option key={indx} value={address}>{address}</option>))}
 						</select>
 					</div>
 				</div>
@@ -88,7 +91,7 @@ const Form: React.FC<FormProps> = ({ onSubmit }:FormProps) => {
 						className="btn btn-primary btn-wide btn-round"
 						onClick={handleSubmit}
 						>
-						Check balance and transaction
+						Search
 					</button>
 				</div>
 			</div>
