@@ -1,21 +1,30 @@
 import React from 'react';
-import Form from './components/Form';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import Home from './containers/Home';
+import Stat from './containers/Stat';
+import NotFound from './containers/NotFound';
 
 const App: React.FC = () => {
-
-    const handleSearch = (data:any) => {
-        console.log(data);
-    };
-
     return (
-        <div className="container">
-            <h1 className="text-center">Ethereum address stat</h1>
-            <main>
-                <Form
-                    onSubmit={handleSearch}
-                />
-            </main>
-        </div>
+        <Router>
+            <div className="container">
+                <Switch>
+                    <Route exact path="/">
+                        <Home />
+                    </Route>
+                    <Route path="/stat">
+                        <Stat />
+                    </Route>
+                    <Route path="*">
+                        <NotFound />
+                    </Route>
+                </Switch>
+            </div>
+        </Router>
     );
 }
 
