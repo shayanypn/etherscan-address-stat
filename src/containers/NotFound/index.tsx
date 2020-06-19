@@ -1,10 +1,24 @@
 import React from 'react';
+import {
+  useLocation,
+  useHistory
+} from "react-router-dom";
 
 const NotFound: React.FC = () => {
+	const history = useHistory();
+
     return (
-        <div>
-            Not Found.
-        </div>
+        <main className="not-found text-center">
+        	<h1>404</h1>
+            <p>Sorry, cannot find the page page.</p>
+            <br /><br />
+            <button 
+            	className="btn btn-primary btn-sm btn-round"
+            	onClick={() => history.push('/')}
+            	>
+            	Back to Home
+            </button>
+        </main>
     );
 }
 

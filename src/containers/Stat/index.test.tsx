@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import App from './App';
+import Stat from './index';
 
-describe('App Component', () => {
+describe('Stat Container', () => {
 
 	test('render', () => {
-		const wrapper = shallow(<App />);
+		const wrapper = shallow(<Stat />);
 		expect(wrapper.exists()).toBe(true);
 	});
 });
