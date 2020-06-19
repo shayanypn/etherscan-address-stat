@@ -1,9 +1,19 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { shallow } from 'enzyme';
 import App from './App';
+import Form from './components/Form';
 
-test('renders App components', () => {
-  const { getByText } = render(<App />);
-  const h1Element = getByText(/Ethereum address stat/i);
-  expect(h1Element).toBeInTheDocument();
+describe('App Component', () => {
+
+	test('render', () => {
+		const wrapper = shallow(<App />);
+		expect(wrapper.exists()).toBe(true);
+	});
+
+	test('element text regression test', () => {
+		const wrapper = shallow(<App />);
+
+		expect(wrapper.find('h1').text()).toBe('Ethereum address stat');
+	    expect(wrapper.containsMatchingElement(<Form />)).toEqual(true);
+	});
 });

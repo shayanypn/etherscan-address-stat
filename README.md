@@ -1,6 +1,8 @@
 
 
 # Etherscan address stat
+[![Build Status](https://travis-ci.com/shayanypn/etherscan-address-stat.svg?branch=master)](https://travis-ci.com/shayanypn/etherscan-address-stat)
+
 Simple app that show  etherscan state of and address
 
 [Preview](https://shayanypn.github.io/etherscan-address-stat/)

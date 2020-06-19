@@ -25,16 +25,16 @@ const Form: React.FC<FormProps> = ({ onSubmit }:FormProps) => {
 	};
 
 	const handleSubmit = () => {
-		if(!isValidAddress) { return; };
-
-		setUsedAddresses([inputAddress, ...usedAddresses].slice(0, 5));
-		handleAddressChange('');
-		setInputNetwork('rinkeby');
+		if(!isValidAddress || !onSubmit) { return; };
 
 		onSubmit({
 			address: inputAddress,
 			network: inputNetwork
 		});
+
+		setUsedAddresses([inputAddress, ...usedAddresses].slice(0, 5));
+		handleAddressChange('');
+		setInputNetwork('rinkeby');
 	};
 
 	return (
@@ -61,7 +61,7 @@ const Form: React.FC<FormProps> = ({ onSubmit }:FormProps) => {
 							onChange={handleAddressSelect}
 							value=""
 						>
-							<option value=""> Select from previous address</option>
+							<option value="">Select from previous address</option>
 							{usedAddresses.map((address, indx) => (<option key={indx} value={address}>{address}</option>))}
 						</select>
 					</div>
