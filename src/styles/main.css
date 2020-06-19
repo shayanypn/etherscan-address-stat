@@ -37,6 +37,22 @@ main {
 }
 
 
+/* CARD */
+.card {
+	position: relative;
+}
+.card.card-loading:after {
+	position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    content: ' Loading... ';
+    text-align: center;
+    padding-top: 15%;
+    font-size: 18px;
+}
+
 /* FORM */
 .form-control {
 	border-color: var(--main-default-lighter);
@@ -51,6 +67,8 @@ main {
 .btn-round {
 	border-radius: 30px;
 }
+
+
 
 
 
