@@ -14,10 +14,10 @@ const Stat: React.FC = () => {
     const { network, address } = useParams();
     const [isLoading, setIsLoading] = React.useState(false);
     const [state, setState] = React.useState({ balance: '', transactions: [] });
-    let Api:any;
+    let Api:any = React.useRef(null);;
 
     const fetchAccountTransactions = () => {
-        Api.fetchAccountTransactions()
+        Api.current.fetchAccountTransactions()
         .then(
             (response:any) => {
                 setState(prevState => ({
@@ -35,20 +35,21 @@ const Stat: React.FC = () => {
         );
     }
 
-
-
     React.useEffect(()=> {
-        Api = new API(network, address);
+
+        if (!network || !address) {return;}
+
+        Api.current = new API(network, address);
 
         setIsLoading(true);
-        Api.fetchAccountBalance()
+        Api.current.fetchAccountBalance()
         .then(
             (response:any) => {
                 setState(prevState => ({
                     ...prevState,
                     balance: response.result
                 }));
-                setTimeout(() => fetchAccountTransactions(), 3000)
+                setTimeout(() => fetchAccountTransactions(), 3000);
             },
             (error:any) => {
                 console.error(error);
