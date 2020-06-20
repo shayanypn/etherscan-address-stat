@@ -27,6 +27,9 @@ h1 {
 .p-description {
 	color: var(--main-default-darker);	
 }
+.pointer {
+	cursor: pointer;
+}
 
 /* CONTAINER */
 main {
@@ -96,5 +99,50 @@ main.not-found h1 {
 
 
 
+.table td, .table th {
+	padding: 0.25rem;
+	font-size: 0.9rem;
+}
+.tb-address {
+	text-overflow: ellipsis;
+	width: 140px;
+	overflow: hidden;
+	white-space: nowrap;
+	margin: 0px;
+}
 
 
+/* MODAL */
+.custom-modal {
+	background: rgba(50, 50, 50, 0.6);
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+	opacity: 0;
+	z-index: -9;
+	pointer-events: none;
+	transition: all 0.1s ease-in-out;
+}
+.custom-modal.active {
+	z-index: 991;
+	opacity: 1;
+	pointer-events: auto;
+}
+.custom-modal .custom-modal-body {
+	background: var(--main-default-lightest);
+	box-shadow: 0 3px 10px var(--main-default-darker);
+	padding: 15px;
+	max-width: 600px;
+	margin: 120px auto 15px;
+	border-radius: 5px;
+}
+
+.bx-qrcode {
+
+}
+.bx-qrcode canvas{
+	width: 300px;
+	height: 300px;
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { MemoryRouter, Route } from 'react-router-dom';
+import { MemoryRouter, Router, Route } from 'react-router-dom';
+import { createMemoryHistory } from "history";
 import Card from '../../components/Card';
 import Stat from './index';
 
@@ -29,6 +30,17 @@ describe('Stat Container', () => {
 		expect(wrapper.find('#btn-back').exists()).toBe(true);
 		expect(wrapper.find('#btn-back').text()).toBe('Back to search');
 		expect(wrapper.find('#stat-address').text()).toBe(params.address);
-		expect(wrapper.find('.card').length).toEqual(4);
+		expect(wrapper.find('.card').length).toEqual(3);
+	});
+
+	test('back button', () => {
+		const history = createMemoryHistory();
+		const wrapper = mount(
+			<Router history={history}>
+				<Stat />
+			</Router>
+		);
+		wrapper.find('#btn-back').simulate('click');
+		expect(history.location.pathname).toBe('/');
 	});
 });
