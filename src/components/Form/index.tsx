@@ -8,6 +8,7 @@ interface FormProps {
 
 const Form: React.FC<FormProps> = ({ onSubmit, addresses = [] }:FormProps) => {
 
+	const [error, setError] = React.useState('');
 	const [inputAddress, setInputAddress] = React.useState('');
 	const [inputNetwork, setInputNetwork] = React.useState('rinkeby');
 	const [isValidAddress, setIsValidAddress] = React.useState(false);
@@ -25,7 +26,13 @@ const Form: React.FC<FormProps> = ({ onSubmit, addresses = [] }:FormProps) => {
 	};
 
 	const handleSubmit = () => {
-		if(!isValidAddress || !onSubmit) { return; };
+		if(!isValidAddress) {
+			setError('Please enter an Ethereum address!')
+			return;
+		};
+
+		// clear errors
+		setError('');
 
 		onSubmit({
 			address: inputAddress,
@@ -39,6 +46,7 @@ const Form: React.FC<FormProps> = ({ onSubmit, addresses = [] }:FormProps) => {
 
 	return (
 		<div>
+			{error && (<div className="alert alert-danger text-center" role="alert">{error}</div>) }
 			<div className="form-row mb-0">
 				<div className="form-group col-sm-8">
 					<div className="form-group">
@@ -50,6 +58,9 @@ const Form: React.FC<FormProps> = ({ onSubmit, addresses = [] }:FormProps) => {
 							value={inputAddress}
 							onChange={e => handleAddressChange(e.target.value)}
 						/>
+						{!isValidAddress 
+							&& (<span className="invalid-feedback">Address is not valid!</span>)
+						}
 						<small id="input-address-tip" className="form-text text-muted">
 							Example: 0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae
 						</small>

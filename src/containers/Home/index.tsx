@@ -7,13 +7,16 @@ const Home: React.FC = () => {
     const history = useHistory();
 	const [usedAddresses, setUsedAddresses] = React.useState([] as string[]);
 
-    const handleSearch = (data:any) => { 
-    	const recent_addresses = [data.address, ...usedAddresses].slice(0, 5);
-		setUsedAddresses(recent_addresses);
+    const handleSearch = (data:any) => {
+        const already_used = usedAddresses.find((address:string) => address === data.address);
+        if (!already_used) {
+        	const recent_addresses = [data.address, ...usedAddresses].slice(0, 5);
+        	setUsedAddresses(recent_addresses);
 
-		// it would be better to handle this by parent component
-		// as it would be separate from FORM component
-    	storeAddresses(recent_addresses);
+        	// it would be better to handle this by parent component
+        	// as it would be separate from FORM component
+        	storeAddresses(recent_addresses);            
+        }
 
     	history.push(`/stat/${data.address}/${data.network}`);
     }
