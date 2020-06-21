@@ -1,7 +1,10 @@
+
+type Netowrk = 'rinkeby' | 'mainnet'
+
 export default class API {
   url: string = '';
 
-  constructor(private network: string, private address: string) {
+  constructor(network: Netowrk, private address: string) {
     if (network === 'rinkeby') {
       this.url = 'https://api-rinkeby.etherscan.io/api';
     } else if (network === 'mainnet') {
@@ -9,11 +12,11 @@ export default class API {
     }
   }
 
-  getAccountBalanceURL() {
+  getAccountBalanceURL():string {
     return `${this.url}?module=account&action=balance&address=${this.address}`;
   }
 
-  getAccountTransactions() {
+  getAccountTransactions():string {
     return `${this.url}?module=account&action=txlist&sort=desc&address=${this.address}`;
   }
 
