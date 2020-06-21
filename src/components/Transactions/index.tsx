@@ -21,7 +21,7 @@ const Transactions: React.FC<TransactionsProps> = ({
         </tr>
       </thead>
       <tbody>
-        {items.map((transaction: any) => (
+        {items.map((transaction: TransactionsType) => (
           <tr key={transaction.blockNumber}>
             <td>
               <p className="tb-address">

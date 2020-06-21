@@ -22,8 +22,7 @@ const Form: React.FC<FormProps> = ({ onSubmit, addresses = [] }) => {
     setInputAddress(value);
   };
 
-  const handleAddressSelect = (e: any) => {
-    const { value } = e.target;
+  const handleAddressSelect = (value: string) => {
     if (value === '') {
       return;
     }
@@ -84,7 +83,7 @@ const Form: React.FC<FormProps> = ({ onSubmit, addresses = [] }) => {
             <select
               className="form-control"
               id="select-addresses"
-              onChange={handleAddressSelect}
+              onChange={e => handleAddressSelect(e.target.value)}
               value=""
             >
               <option value="">Select from previous address</option>

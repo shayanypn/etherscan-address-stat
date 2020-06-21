@@ -1,6 +1,10 @@
 import React from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import QRCode from 'qrcode';
+import {
+  TransactionsType,
+  BalanceResponseType
+} from './../../utils';
 import Card from '../../components/Card';
 import Modal from '../../components/Modal';
 import Transactions from '../../components/Transactions';
@@ -24,7 +28,7 @@ const Stat: React.FC = () => {
         setState((prevState) => ({
           ...prevState,
           transactions: response.result
-            .sort((a: any, b: any) => {
+            .sort((a: TransactionsType, b: TransactionsType) => {
               return (
                 new Date(parseInt(b.timeStamp, 10) * 1000).getTime() -
                 new Date(parseInt(a.timeStamp, 10) * 1000).getTime()
@@ -57,7 +61,7 @@ const Stat: React.FC = () => {
 
     setIsLoading(true);
     Api.current.fetchAccountBalance().then(
-      (response: any) => {
+      (response: BalanceResponseType) => {
         setState((prevState) => ({
           ...prevState,
           balance: response.result,
