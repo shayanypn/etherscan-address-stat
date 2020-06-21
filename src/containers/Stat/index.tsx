@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import QRCode from 'qrcode';
-import { TransactionsType, BalanceResponseType } from './../../utils';
+import { TransactionsType, BalanceResponseType, TransactionsResponseType, StateType } from './../../utils';
 import Card from '../../components/Card';
 import Modal from '../../components/Modal';
 import Transactions from '../../components/Transactions';
@@ -15,13 +15,13 @@ const Stat: React.FC = () => {
   const { network, address } = useParams();
   const [isLoading, setIsLoading] = React.useState(false);
   const [enableModal, setEnableModal] = React.useState(false);
-  const [state, setState] = React.useState({ balance: '', transactions: [] });
+  const [state, setState] = React.useState<StateType>({ balance: '', transactions: [] });
   const qrcodeEle = React.useRef(null);
-  const Api: any = React.useRef(null);
+  const Api:any = React.useRef(null);
 
   const fetchAccountTransactions = () => {
     Api.current.fetchAccountTransactions().then(
-      (response: any) => {
+      (response: TransactionsResponseType) => {
         setState((prevState) => ({
           ...prevState,
           transactions: response.result

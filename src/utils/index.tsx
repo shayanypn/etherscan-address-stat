@@ -38,8 +38,19 @@ export interface TransactionsType {
   confirmations: string;
 }
 
+export interface TransactionsResponseType {
+  message: string;
+  result: TransactionsType[];
+  status: string;
+}
+
 export interface BalanceResponseType {
 	message: string;
 	result: string;
 	status: string;
+}
+
+export interface StateType {
+  balance: string;
+  transactions: TransactionsType[];
 }
