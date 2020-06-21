@@ -83,7 +83,7 @@ const Form: React.FC<FormProps> = ({ onSubmit, addresses = [] }) => {
             <select
               className="form-control"
               id="select-addresses"
-              onChange={e => handleAddressSelect(e.target.value)}
+              onChange={(e) => handleAddressSelect(e.target.value)}
               value=""
             >
               <option value="">Select from previous address</option>

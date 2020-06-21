@@ -1,5 +1,4 @@
-
-type Netowrk = 'rinkeby' | 'mainnet'
+type Netowrk = 'rinkeby' | 'mainnet';
 
 export default class API {
   url: string = '';
@@ -12,11 +11,11 @@ export default class API {
     }
   }
 
-  getAccountBalanceURL():string {
+  getAccountBalanceURL(): string {
     return `${this.url}?module=account&action=balance&address=${this.address}`;
   }
 
-  getAccountTransactions():string {
+  getAccountTransactions(): string {
     return `${this.url}?module=account&action=txlist&sort=desc&address=${this.address}`;
   }
 

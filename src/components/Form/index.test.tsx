@@ -49,11 +49,9 @@ describe('Form Component', () => {
       'is-valid'
     );
 
-    wrapper
-      .find('#input-address')
-      .simulate('change', {
-        target: { value: '0xb3775fb83f7d12a36e0475abdd1fca35c091efb' },
-      });
+    wrapper.find('#input-address').simulate('change', {
+      target: { value: '0xb3775fb83f7d12a36e0475abdd1fca35c091efb' },
+    });
     expect(wrapper.find('#input-address').props().className).toContain(
       'is-invalid'
     );

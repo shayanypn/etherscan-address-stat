@@ -1,10 +1,7 @@
 import React from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import QRCode from 'qrcode';
-import {
-  TransactionsType,
-  BalanceResponseType
-} from './../../utils';
+import { TransactionsType, BalanceResponseType } from './../../utils';
 import Card from '../../components/Card';
 import Modal from '../../components/Modal';
 import Transactions from '../../components/Transactions';
