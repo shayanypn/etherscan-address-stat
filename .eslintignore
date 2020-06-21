@@ -1,0 +1,5 @@
+// .eslintignore
+build/*
+public/*
+src/serviceWorker.ts
+src/setupTests.ts
