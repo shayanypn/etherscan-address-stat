@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import QRCode from 'qrcode';
-import { TransactionsType, BalanceResponseType, TransactionsResponseType, StateType } from './../../utils';
+import { TransactionsType, BalanceResponseType, TransactionsResponseType, StateType } from './../../types';
 import Card from '../../components/Card';
 import Modal from '../../components/Modal';
 import Transactions from '../../components/Transactions';
@@ -25,12 +25,7 @@ const Stat: React.FC = () => {
         setState((prevState) => ({
           ...prevState,
           transactions: response.result
-            .sort((a: TransactionsType, b: TransactionsType) => {
-              return (
-                new Date(parseInt(b.timeStamp, 10) * 1000).getTime() -
-                new Date(parseInt(a.timeStamp, 10) * 1000).getTime()
-              );
-            })
+            .sort((a: TransactionsType, b: TransactionsType) => Number(b.timeStamp) - Number(a.timeStamp))
             .slice(0, 10),
         }));
         setIsLoading(false);
@@ -57,7 +52,7 @@ const Stat: React.FC = () => {
     Api.current = new API(network, address);
 
     setIsLoading(true);
-    Api.current!.fetchAccountBalance().then(
+    Api.current.fetchAccountBalance().then(
       (response: BalanceResponseType) => {
         setState((prevState) => ({
           ...prevState,
@@ -82,6 +77,7 @@ const Stat: React.FC = () => {
         <div className="bx-qrcode text-center">
           <h3>Etherum Address</h3>
           <canvas ref={qrcodeEle}></canvas>
+          <p><b>{address}</b></p>
           <p>Point your phone to this screen to capture the code</p>
         </div>
       </Modal>
@@ -112,13 +108,9 @@ const Stat: React.FC = () => {
           Balance: <b id="stat-balance">{state.balance}</b>
         </Card>
 
-        {!!state.transactions.length && (
-          <Card className="mb-3" noPadding>
+        {state.transactions.length ? (<Card className="mb-3" noPadding>
             <Transactions items={state.transactions} />
-          </Card>
-        )}
-        {!state.transactions.length && (
-          <div className="alert alert-warning text-center" role="alert">
+          </Card>) : (<div className="alert alert-warning text-center" role="alert">
             No transactions found for this address!
           </div>
         )}

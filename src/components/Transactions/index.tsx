@@ -1,6 +1,6 @@
 import React from 'react';
 import Moment from 'react-moment';
-import { TransactionsType } from './../../utils';
+import { TransactionsType } from './../../types';
 
 interface TransactionsProps {
   className?: string;

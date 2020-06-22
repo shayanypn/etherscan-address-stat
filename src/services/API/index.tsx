@@ -1,9 +1,9 @@
-type Netowrk = 'rinkeby' | 'mainnet';
+import { Network } from '../../types';
 
 export default class API {
   url: string = '';
 
-  constructor(network: Netowrk, private address: string) {
+  constructor(network: Network, private address: string) {
     if (network === 'rinkeby') {
       this.url = 'https://api-rinkeby.etherscan.io/api';
     } else if (network === 'mainnet') {

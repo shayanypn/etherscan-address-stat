@@ -131,8 +131,6 @@ main.not-found h1 {
   border-radius: 5px;
 }
 
-.bx-qrcode {
-}
 .bx-qrcode canvas {
   width: 300px;
   height: 300px;

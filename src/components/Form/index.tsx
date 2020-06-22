@@ -1,5 +1,6 @@
 import React from 'react';
 import { validateAddresses } from '../../utils';
+import { Network } from '../../types';
 
 interface FormDataProps {
   address: string;
@@ -14,7 +15,7 @@ interface FormProps {
 const Form: React.FC<FormProps> = ({ onSubmit, addresses = [] }) => {
   const [error, setError] = React.useState('');
   const [inputAddress, setInputAddress] = React.useState('');
-  const [inputNetwork, setInputNetwork] = React.useState('rinkeby');
+  const [inputNetwork, setInputNetwork] = React.useState<Network>('rinkeby');
   const [isValidAddress, setIsValidAddress] = React.useState(false);
 
   const handleAddressChange = (value: string) => {
@@ -103,7 +104,7 @@ const Form: React.FC<FormProps> = ({ onSubmit, addresses = [] }) => {
             <select
               className="form-control"
               id="select-network"
-              onChange={(e) => setInputNetwork(e.target.value)}
+              onChange={(e) => setInputNetwork(e.target.value as Network)}
             >
               <option value="rinkeby">Rinkeby</option>
               <option value="mainnet">Mainnet</option>
