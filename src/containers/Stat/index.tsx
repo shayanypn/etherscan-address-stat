@@ -17,10 +17,10 @@ const Stat: React.FC = () => {
   const [enableModal, setEnableModal] = React.useState(false);
   const [state, setState] = React.useState<StateType>({ balance: '', transactions: [] });
   const qrcodeEle = React.useRef(null);
-  const Api:any = React.useRef(null);
+  const Api = React.useRef<API | null>(null);
 
   const fetchAccountTransactions = () => {
-    Api.current.fetchAccountTransactions().then(
+    Api.current!.fetchAccountTransactions().then(
       (response: TransactionsResponseType) => {
         setState((prevState) => ({
           ...prevState,
@@ -57,7 +57,7 @@ const Stat: React.FC = () => {
     Api.current = new API(network, address);
 
     setIsLoading(true);
-    Api.current.fetchAccountBalance().then(
+    Api.current!.fetchAccountBalance().then(
       (response: BalanceResponseType) => {
         setState((prevState) => ({
           ...prevState,
