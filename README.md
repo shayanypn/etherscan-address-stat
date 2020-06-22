@@ -7,20 +7,24 @@ Simple application to show an ethereum balance and transtion by using its addres
 
 [Preview](https://etherscan-address-stat.vercel.app/)
 
+![screen record of preview](https://github.com/shayanypn/etherscan-address-stat/blob/master/preview.gif)
+
 ## Available Scripts
 
 
     git clone https://github.com/shayanypn/etherscan-address-stat.git
+    cd etherscan-address-stat
     npm install
     npm start
 
 	//test
+	npm run lint
 	npm run test
 	npm run test:coverage
 
-	//build and deploy
+	//build
     npm run build
-    npm run deploy
+    
 
 
 
