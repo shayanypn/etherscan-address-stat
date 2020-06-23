@@ -3,7 +3,7 @@
 # Etherscan address stat
 [![Build Status](https://travis-ci.com/shayanypn/etherscan-address-stat.svg?branch=master)](https://travis-ci.com/shayanypn/etherscan-address-stat)
 
-Simple application to show an ethereum balance and transition by using its address. You can enter an ethereum address or you can choose from the last address you already used, then choose your network and press search button.
+Simple application to show an ethereum balance and transition by using its address. You can enter an ethereum address or you can choose from the last address you already used, then choose your network and search.
 
 [Preview](https://etherscan-address-stat.vercel.app/)
 
@@ -47,10 +47,10 @@ Project folder/directory structure
         /services - services used across the application (this could be an API service, or future estimation of ethereum regarding of giving data)
         /styles - styles of application written in CSS
         /utils - useful or common tools used across the application rapidly
-        /types.tsx - contain interfaces(beside of component interface as we locate them in the component itself to increase the readability of them) and types used in the application
+        /types.tsx - contain interfaces(aside from component interfaces which are located alongside relevant components) and types used in the application
 
 ### Component Structure
-Each code in this application should follow the below structure, to be constant with other parts of the application. The name of component/service/... consists of a folder/directory name and the code place in the `index.ts` file. For other additional files like tests, you should add them under this folder with a suffix name, like `index.test.ts` or `index.stories.ts`, and for style, we use a constant name as `main.css`
+All code in this application should follow the below structure to be consistent with other parts of the application. The name of component or service ... consists of a folder/directory name and the entry point is the `index.ts` file. For other additional files like tests, you should add them under this folder with a suffix name, like `index.test.ts` or `index.stories.ts`, and for style, we use a consistent name as `main.css`
 
     /[component name]
     	/index.ts
@@ -58,7 +58,7 @@ Each code in this application should follow the below structure, to be constant 
     	/index.stories.ts
     	/main.css
 
-#### Patterns
- - Component (modules under `/components` directory) should work independently, following presental pattern, without any storing or fetching data.
- - Containers/Pages are responsible to provide components dependencies and data, storing/restoring data and also build the follow of a page.
- - All API calls should work under a service.
+#### Guidelines
+ - Component (modules under `/components` directory) should work independently, without any storing or fetching data.
+ - Containers/Pages are responsible for providing components dependencies and data, storing/restoring data and also build the follow of a page.
+ - All API calls should happen in a service.
