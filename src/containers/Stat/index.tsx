@@ -90,12 +90,15 @@ const Stat: React.FC = () => {
           Back to search
         </button>
         <Card className="mt-3 p-1 card-stat pointer" noPadding>
-          <div className="d-flex justify-content-between" onClick={handleModal}>
-            <div>
-              <img src={IconEther} alt="icon etherum" />
-              Address: <b id="stat-address">{address}</b>
+          <div className="d-flex align-items-center justify-content-between" onClick={handleModal}>
+            <div className="d-flex align-items-center">
+              <img className="d-none d-md-block" src={IconEther} alt="icon ether" />
+              <div className="d-flex flex-column flex-md-row">
+                <span className="pr-1">Address:</span>
+                <b id="stat-address">{address}</b>
+              </div>
             </div>
-            <img src={IconQR} alt="icon qr-code" />
+            <img className="d-none d-md-block" src={IconQR} alt="icon qr-code" />
           </div>
         </Card>
         <small id="input-address-tip" className="form-text text-muted">
@@ -104,8 +107,13 @@ const Stat: React.FC = () => {
         </small>
 
         <Card className="mt-3 mb-3 p-1 card-stat" noPadding>
-          <img src={IconBalance} alt="icon balance" />
-          Balance: <b id="stat-balance">{state.balance}</b>
+          <div className="d-flex align-items-center">
+            <img className="d-none d-md-block" src={IconBalance} alt="icon balance" />
+            <div className="d-flex flex-column flex-md-row">
+              <span className="pr-1">Balance:</span>
+              <b id="stat-balance">{state.balance}</b>
+            </div>
+          </div>
         </Card>
 
         {state.transactions.length ? (<Card className="mb-3" noPadding>
