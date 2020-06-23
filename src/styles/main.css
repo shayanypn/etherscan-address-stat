@@ -75,6 +75,21 @@ main.not-found h1 {
   width: 50px;
   padding: 5px;
 }
+@media screen and (max-width: 490px) {
+  .card-stat img {
+    width: 30px;
+    padding: 0px;
+    height: 30px;
+  }
+  .card-stat b {
+    font-size: 70%;
+  }
+}
+@media screen and (max-width: 380px) {
+  .card-stat b {
+    font-size: 55%;
+  }
+}
 
 /* FORM */
 .form-control {
@@ -90,7 +105,18 @@ main.not-found h1 {
 .btn-round {
   border-radius: 30px;
 }
+@media screen and (max-width: 490px) {
+  small.form-text {
+    font-size: 70%;
+  }
+}
+@media screen and (max-width: 380px) {
+  small.form-text {
+    font-size: 55%;
+  }
+}
 
+/* TABLE */
 .table td,
 .table th {
   padding: 0.25rem;

@@ -13,18 +13,22 @@ const App: React.FC = () => {
     return (
         <Router>
             <div className="container">
-                <h1 className="text-center">Ethereum address stat</h1>
-                <Switch>
-                    <Route exact path="/">
-                        <Home />
-                    </Route>
-                    <Route path="/stat/:address/:network">
-                        <Stat />
-                    </Route>
-                    <Route path="*">
-                        <NotFound />
-                    </Route>
-                </Switch>
+                <div className="row">
+                    <div className="col">
+                        <h1 className="text-center">Ethereum address stat</h1>
+                        <Switch>
+                            <Route exact path="/">
+                                <Home />
+                            </Route>
+                            <Route path="/stat/:address/:network">
+                                <Stat />
+                            </Route>
+                            <Route path="*">
+                                <NotFound />
+                            </Route>
+                        </Switch>
+                    </div>
+                </div>
             </div>
         </Router>
     );
