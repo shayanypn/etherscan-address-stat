@@ -1,0 +1,17 @@
+.form-control {
+  border-color: var(--main-default-lighter);
+}
+.form-control:focus {
+  box-shadow: none;
+  border-color: var(--main-default-primary);
+}
+@media screen and (max-width: 490px) {
+  small.form-text {
+    font-size: 70%;
+  }
+}
+@media screen and (max-width: 380px) {
+  small.form-text {
+    font-size: 55%;
+  }
+}

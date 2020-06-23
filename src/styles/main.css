@@ -43,118 +43,11 @@ main.not-found h1 {
   font-size: 200px;
 }
 
-/* CARD */
-.card {
-  position: relative;
-  border-color: var(--main-default-lighter);
-}
-.card-empty {
-  border-color: transparent;
-}
-.card.card-loading .card-body {
-  opacity: 0.3;
-}
-.card.card-loading:after {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 5px;
-  content: ' Loading... ';
-  font-size: 18px;
-  left: 0px;
-  top: 0px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.card-stat {
-  background: var(--main-default-lighter);
-}
-.card-stat img {
-  width: 50px;
-  padding: 5px;
-}
-@media screen and (max-width: 490px) {
-  .card-stat img {
-    width: 30px;
-    padding: 0px;
-    height: 30px;
-  }
-  .card-stat b {
-    font-size: 70%;
-  }
-}
-@media screen and (max-width: 380px) {
-  .card-stat b {
-    font-size: 55%;
-  }
-}
-
-/* FORM */
-.form-control {
-  border-color: var(--main-default-lighter);
-}
-.form-control:focus {
-  box-shadow: none;
-  border-color: var(--main-default-primary);
-}
 .btn-wide {
   width: 100%;
 }
 .btn-round {
   border-radius: 30px;
-}
-@media screen and (max-width: 490px) {
-  small.form-text {
-    font-size: 70%;
-  }
-}
-@media screen and (max-width: 380px) {
-  small.form-text {
-    font-size: 55%;
-  }
-}
-
-/* TABLE */
-.table td,
-.table th {
-  padding: 0.25rem;
-  font-size: 0.9rem;
-}
-.tb-address {
-  text-overflow: ellipsis;
-  width: 140px;
-  overflow: hidden;
-  white-space: nowrap;
-  margin: 0px;
-}
-
-/* MODAL */
-.custom-modal {
-  background: rgba(50, 50, 50, 0.6);
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0px;
-  left: 0px;
-  opacity: 0;
-  z-index: -9;
-  pointer-events: none;
-  transition: all 0.1s ease-in-out;
-}
-.custom-modal.active {
-  z-index: 991;
-  opacity: 1;
-  pointer-events: auto;
-}
-.custom-modal .custom-modal-body {
-  background: var(--main-default-lightest);
-  box-shadow: 0 3px 10px var(--main-default-darker);
-  padding: 15px;
-  max-width: 600px;
-  margin: 120px auto 15px;
-  border-radius: 5px;
 }
 
 .bx-qrcode canvas {

@@ -1,7 +1,12 @@
 import React from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import QRCode from 'qrcode';
-import { TransactionsType, BalanceResponseType, TransactionsResponseType, StateType } from './../../types';
+import {
+  TransactionsType,
+  BalanceResponseType,
+  TransactionsResponseType,
+  StateType,
+} from './../../types';
 import Card from '../../components/Card';
 import Modal from '../../components/Modal';
 import Transactions from '../../components/Transactions';
@@ -15,7 +20,10 @@ const Stat: React.FC = () => {
   const { network, address } = useParams();
   const [isLoading, setIsLoading] = React.useState(false);
   const [enableModal, setEnableModal] = React.useState(false);
-  const [state, setState] = React.useState<StateType>({ balance: '', transactions: [] });
+  const [state, setState] = React.useState<StateType>({
+    balance: '',
+    transactions: [],
+  });
   const qrcodeEle = React.useRef(null);
   const Api = React.useRef<API | null>(null);
 
@@ -25,7 +33,10 @@ const Stat: React.FC = () => {
         setState((prevState) => ({
           ...prevState,
           transactions: response.result
-            .sort((a: TransactionsType, b: TransactionsType) => Number(b.timeStamp) - Number(a.timeStamp))
+            .sort(
+              (a: TransactionsType, b: TransactionsType) =>
+                Number(b.timeStamp) - Number(a.timeStamp)
+            )
             .slice(0, 10),
         }));
         setIsLoading(false);
@@ -77,7 +88,9 @@ const Stat: React.FC = () => {
         <div className="bx-qrcode text-center">
           <h3>Etherum Address</h3>
           <canvas ref={qrcodeEle}></canvas>
-          <p><b>{address}</b></p>
+          <p>
+            <b>{address}</b>
+          </p>
           <p>Point your phone to this screen to capture the code</p>
         </div>
       </Modal>
@@ -90,15 +103,26 @@ const Stat: React.FC = () => {
           Back to search
         </button>
         <Card className="mt-3 p-1 card-stat pointer" noPadding>
-          <div className="d-flex align-items-center justify-content-between" onClick={handleModal}>
+          <div
+            className="d-flex align-items-center justify-content-between"
+            onClick={handleModal}
+          >
             <div className="d-flex align-items-center">
-              <img className="d-none d-md-block" src={IconEther} alt="icon ether" />
+              <img
+                className="d-none d-md-block"
+                src={IconEther}
+                alt="icon ether"
+              />
               <div className="d-flex flex-column flex-md-row">
                 <span className="pr-1">Address:</span>
                 <b id="stat-address">{address}</b>
               </div>
             </div>
-            <img className="d-none d-md-block" src={IconQR} alt="icon qr-code" />
+            <img
+              className="d-none d-md-block"
+              src={IconQR}
+              alt="icon qr-code"
+            />
           </div>
         </Card>
         <small id="input-address-tip" className="form-text text-muted">
@@ -108,7 +132,11 @@ const Stat: React.FC = () => {
 
         <Card className="mt-3 mb-3 p-1 card-stat" noPadding>
           <div className="d-flex align-items-center">
-            <img className="d-none d-md-block" src={IconBalance} alt="icon balance" />
+            <img
+              className="d-none d-md-block"
+              src={IconBalance}
+              alt="icon balance"
+            />
             <div className="d-flex flex-column flex-md-row">
               <span className="pr-1">Balance:</span>
               <b id="stat-balance">{state.balance}</b>
@@ -116,9 +144,12 @@ const Stat: React.FC = () => {
           </div>
         </Card>
 
-        {state.transactions.length ? (<Card className="mb-3" noPadding>
+        {state.transactions.length ? (
+          <Card className="mb-3" noPadding>
             <Transactions items={state.transactions} />
-          </Card>) : (<div className="alert alert-warning text-center" role="alert">
+          </Card>
+        ) : (
+          <div className="alert alert-warning text-center" role="alert">
             No transactions found for this address!
           </div>
         )}

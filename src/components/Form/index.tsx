@@ -1,6 +1,7 @@
 import React from 'react';
 import { validateAddresses } from '../../utils';
 import { Network } from '../../types';
+import './main.css';
 
 interface FormDataProps {
   address: string;

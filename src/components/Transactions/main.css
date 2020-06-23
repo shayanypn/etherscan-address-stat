@@ -1,0 +1,12 @@
+.table td,
+.table th {
+  padding: 0.25rem;
+  font-size: 0.9rem;
+}
+.tb-address {
+  text-overflow: ellipsis;
+  width: 140px;
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0px;
+}

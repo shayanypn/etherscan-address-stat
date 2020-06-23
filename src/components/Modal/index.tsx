@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './main.css';
 
 interface ModalProps {
   className?: string;
@@ -31,6 +32,7 @@ const Modal: React.FC<ModalProps> = ({
     </div>
   );
 
+  // this option give access to component for rendering in another node
   if (portalNodeId) {
     const portalNode: HTMLElement | null = document.getElementById(
       portalNodeId

@@ -1,0 +1,46 @@
+.card {
+  position: relative;
+  border-color: var(--main-default-lighter);
+}
+.card-empty {
+  border-color: transparent;
+}
+.card.card-loading .card-body {
+  opacity: 0.3;
+}
+.card.card-loading:after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+  content: ' Loading... ';
+  font-size: 18px;
+  left: 0px;
+  top: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card-stat {
+  background: var(--main-default-lighter);
+}
+.card-stat img {
+  width: 50px;
+  padding: 5px;
+}
+@media screen and (max-width: 490px) {
+  .card-stat img {
+    width: 30px;
+    padding: 0px;
+    height: 30px;
+  }
+  .card-stat b {
+    font-size: 70%;
+  }
+}
+@media screen and (max-width: 380px) {
+  .card-stat b {
+    font-size: 55%;
+  }
+}

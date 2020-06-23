@@ -1,6 +1,7 @@
 import React from 'react';
 import Moment from 'react-moment';
 import { TransactionsType } from './../../types';
+import './main.css';
 
 interface TransactionsProps {
   className?: string;
@@ -50,7 +51,9 @@ const Transactions: React.FC<TransactionsProps> = ({
                     transaction.isError === '0' ? 'success' : 'danger'
                   }`}
                 >
-                  {transaction.isError === '0' ? 'Success' : 'Rejected/Cancelled'}
+                  {transaction.isError === '0'
+                    ? 'Success'
+                    : 'Rejected/Cancelled'}
                 </span>
                 <br />
                 <small>

@@ -11,19 +11,19 @@ export default class API {
     }
   }
 
-  getAccountBalanceURL(): string {
+  getAccountBalanceUrl(): string {
     return `${this.url}?module=account&action=balance&address=${this.address}`;
   }
 
-  getAccountTransactions(): string {
+  getAccountTransactionsUrl(): string {
     return `${this.url}?module=account&action=txlist&sort=desc&address=${this.address}`;
   }
 
   fetchAccountBalance() {
-    return fetch(this.getAccountBalanceURL()).then((res) => res.json());
+    return fetch(this.getAccountBalanceUrl()).then((res) => res.json());
   }
 
   fetchAccountTransactions() {
-    return fetch(this.getAccountTransactions()).then((res) => res.json());
+    return fetch(this.getAccountTransactionsUrl()).then((res) => res.json());
   }
 }
