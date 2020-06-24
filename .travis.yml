@@ -10,6 +10,7 @@ cache:
 script:
   - npm test
   - npm run build
+  - now ./build --token=$NOW_TOKEN
 
 deploy:
   provider: pages
