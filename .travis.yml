@@ -10,7 +10,7 @@ cache:
 script:
   - npm test
   - npm run build
-  - vercel ./build --token $NOW_TOKEN
+  - now ./build --token=$NOW_TOKEN
 
 deploy:
   provider: pages
