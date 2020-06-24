@@ -1,5 +1,6 @@
 
 
+
 # Etherscan address stat
 [![Build Status](https://travis-ci.com/shayanypn/etherscan-address-stat.svg?branch=master)](https://travis-ci.com/shayanypn/etherscan-address-stat)
 
@@ -27,13 +28,13 @@ Simple application to show an ethereum balance and transition by using its addre
     
 
 
-
 ## Interesting Code
-To build this application as one purpose for now, each component suppose to act its role, however if we suppose to expand this application, it of course need some modifications as below
- - `<Transactions />` should change to a table component that give title, columns options and items.
- - `API` service should change to only user as an ajax caller. A new service should be built to handle different URL call.
- - Should use SASS to have better control on CSS and also reduce duplication.
 
+To help guide you through the interesting pieces of this implementation note the following.
+
+-  Note that  `<Modal />`  takes a  [`portalNodeId`](https://github.com/shayanypn/etherscan-address-stat/blob/c4e73076a7eaa3a5305129d22d8260b556bb5d21/src/components/Modal/index.tsx#L36)  prop. This can improve reusability with the help of  `ReactDOM.createPortal`  to allow rendering your modal in a DOM node that exists outside the DOM hierarchy of the parent component.
+-  An [**API service**](https://github.com/shayanypn/etherscan-address-stat/blob/master/src/services/API/index.tsx) encapsulates all interaction with external apis. This removes the need to know how to do an api query from components and gives us a central location to add features such as caching and batching in the future.
+-  The code also includes a **unit test** suite to provide a safety net and allow future work to refactor confidently.
 
 
 ## Project Structure
@@ -62,3 +63,10 @@ All code in this application should follow the below structure to be consistent 
  - Component (modules under `/components` directory) should work independently, without any storing or fetching data.
  - Containers/Pages are responsible for providing components dependencies and data, storing/restoring data and also build the follow of a page.
  - All API calls should happen in a service.
+
+
+## Todo
+To build this application as one purpose for now, each component suppose to act its role, however if we suppose to expand this application, it of course need some modifications as below
+ - `<Transactions />` should change to a table component that give title, columns options and items.
+ - `API` service should change to only user as an ajax caller. A new service should be built to handle different URL call.
+ - Should use SASS to have better control on CSS and also reduce duplication.
